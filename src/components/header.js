@@ -1,18 +1,19 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { Col } from 'antd';
 
-const Header = ({ siteTitle }) => (
-  <header
+const Header = () => (
+  <Col
+    span={24}
     style={{
       background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
+      marginBottom: 0,
     }}
   >
     <div
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
+        textAlign: 'left',
         padding: `1.45rem 1.0875rem`,
       }}
     >
@@ -24,11 +25,11 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          Anything
         </Link>
       </h1>
     </div>
-  </header>
+  </Col>
 )
 
 Header.propTypes = {
