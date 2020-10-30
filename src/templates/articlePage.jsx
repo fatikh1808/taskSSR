@@ -1,9 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import Layout from "../components/layout"
 import { Col, Descriptions, Image, PageHeader, Row, Typography } from "antd"
-
+import s from './articlePage.module.css'
 
 const { Text } = Typography
 
@@ -42,7 +41,8 @@ export default ({ data }) => {
         title={article.title}
       >
         <Descriptions size="small" span={2} column={1}>
-          <Descriptions.Item label="Written by">{article.article_author.name} {article.article_author.last_name}</Descriptions.Item>
+          <Descriptions.Item
+            label="Written by">{article.article_author.name} {article.article_author.last_name}</Descriptions.Item>
           <Descriptions.Item label="Rubric">
             <a href={`/rubric/${article.article_rubric.id}`}>{article.article_rubric.type_name}</a>
           </Descriptions.Item>
@@ -56,7 +56,7 @@ export default ({ data }) => {
           />
         </Col>
         <Col xs={24} sm={24} md={24} lg={16} xl={16}>
-          <Text style={{padding: 20}}>{article.body}</Text>
+          <Text className={s.article_body}>{article.body}</Text>
         </Col>
       </Row>
     </Layout>

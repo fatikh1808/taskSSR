@@ -1,6 +1,6 @@
-const fetch = require("isomorphic-fetch")
-const {createHttpLink} = require("apollo-link-http")
 require("dotenv").config()
+const fetch = require("isomorphic-fetch")
+const { createHttpLink } = require("apollo-link-http")
 
 module.exports = {
   plugins: [
@@ -11,9 +11,11 @@ module.exports = {
         fieldName: "Blog",
         createLink: pluginOptions => {
           return createHttpLink({
-            uri: "https://gql-2.test.serafim.help/v1/graphql",
+            uri:
+              "https://gql-2.test.serafim.help/v1/graphql",
             headers: {
-              "x-hasura-admin-secret": process.env.HASURA_GRAPHQL_ADMIN_SECRET
+              "x-hasura-admin-secret":
+              process.env.GATSBY_HASURA_GRAPHQL_ADMIN_SECRET
             },
             fetch
           })

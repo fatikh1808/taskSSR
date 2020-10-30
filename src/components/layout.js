@@ -12,13 +12,14 @@ const Layout = ({ children }) => {
   return (
     <Row
       gutter={[16, 24]}
-      style={{ margin: 0 }}>
+      className={"layout_row"}>
       <Header/>
       <LeftBar/>
       <Col xs={24} sm={18} md={18} lg={21} xl={22}>
         <Row
           gutter={[16, 16]}
-          style={{ textAlign: "-webkit-center", margin: 0 }}>
+          className={"layout_center_row"}
+        >
           {children}
         </Row>
         <Footer/>

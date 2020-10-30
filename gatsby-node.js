@@ -1,3 +1,11 @@
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    node: {
+      fs: 'empty'
+    }
+  })
+}
+
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   const article = await  graphql(
