@@ -1,9 +1,10 @@
 import React, { useState } from "react"
+import { useQuery } from "react-apollo-hooks"
+import gql from "graphql-tag"
+
 import Layout from "../components/layout"
 import { Title } from "../components/title"
 
-import { useQuery } from "react-apollo-hooks"
-import gql from "graphql-tag"
 import "antd/dist/antd.css"
 
 import Maper from "../components/maper"
@@ -54,4 +55,4 @@ const IndexPage = () => {
 }
 
 
-export default IndexPage
+export default IndexPage;

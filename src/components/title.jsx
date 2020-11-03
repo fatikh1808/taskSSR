@@ -4,7 +4,7 @@ import {Col} from 'antd';
 export const Title = (children) => {
 
   return(
-    <Col xs={24} sm={18} md={18} lg={21} xl={22}>
+    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
         <h1>
           {Object.keys(children).length !== 0 ? children.children : "Articles"}
         </h1>

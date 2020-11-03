@@ -1,9 +1,11 @@
 import React from "react"
 import { Col } from "antd"
+import { connect } from "react-redux"
+
 import { ArticleCard } from "./articleCard"
 
 
-const Maper = ({ data, error, loading }) => {
+const Maper = ({ data, error, loading, isOpen, }) => {
 
   if (loading) {
     return <h1> Loading ... </h1>
@@ -12,7 +14,7 @@ const Maper = ({ data, error, loading }) => {
   } else {
     return (
       data.map((item => (
-            <Col xs={24} sm={18} md={12} lg={8} xl={6} key={item.id}>
+            <Col xs={24} sm={isOpen ? 11 : 23} md={isOpen ? 11 : 12} lg={8} xl={6} key={item.id}>
               <ArticleCard
                 id={item.id}
                 author_name={item.article_author.name}
@@ -29,4 +31,6 @@ const Maper = ({ data, error, loading }) => {
   }
 }
 
-export default Maper
+export default connect(state => ({
+  isOpen: state.app.isOpen
+}), null)(Maper)

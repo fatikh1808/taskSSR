@@ -1,17 +1,20 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql, StaticQuery } from "gatsby"
+import { connect } from "react-redux"
+
+import { toggleMobilekMode } from "../state/app"
 import "antd/dist/antd.css"
 import { Layout, Menu, Col } from "antd"
 
 const { Sider } = Layout
 
-export const LeftBar = () => {
-
-  const [collapse, setCollapse] = useState(true)
+const LeftBar = ({ isMobileMode, isOpen, dispatch }) => {
 
 
   return (
-    <Col xs={24} sm={6} md={6} lg={3} xl={2} style={{padding: 0}}>
+    <Col xs={24} sm={isOpen ? 1 : 6} md={isOpen ? 1 : 6} lg={3} xl={2}
+         style={{ height: isOpen ? "0" : "100%", padding: 0 }}
+     >
       <StaticQuery
         query={graphql`
        {
@@ -28,16 +31,15 @@ export const LeftBar = () => {
           <Sider
             breakpoint="lg"
             collapsedWidth="0"
-            width={collapse ? "100%" : "85%"}
-            onCollapse={(collapsed, type) => {
-              setCollapse(collapsed)
-            }}
-            style={{height: "100%"}}
+            width={isMobileMode ? "85%" : "100%"}
+            onCollapse={(isType, type) => dispatch(toggleMobilekMode(isType, type))}
+            style={isOpen ? { height: 0 } : { height: "100%" }}
+
           >
             <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
               {rubrics.map(item => (
-                <Menu.Item key={item.id} style={{ height: collapse ? "2px" : "auto"}}>
-                  <a href={`/rubric/${item.id}`}>
+                <Menu.Item key={item.id}>
+                  <a href={`/${item.type_name}`}>
                     {item.type_name}
                   </a>
                 </Menu.Item>
@@ -49,3 +51,8 @@ export const LeftBar = () => {
     </Col>
   )
 }
+
+export default connect(state => ({
+  isMobileMode: state.app.isMobileMode,
+  isOpen: state.app.isOpen
+}), null)(LeftBar)

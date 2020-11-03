@@ -1,53 +1,47 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { connect } from "react-redux"
+
 import Layout from "../components/layout"
 import { Col, Descriptions, Image, PageHeader, Row, Typography } from "antd"
-import s from './articlePage.module.css'
+import s from "./articlePage.module.css"
 
 const { Text } = Typography
 
 
-export const query = graphql`
-  query($id: Int!) {
-    Blog {
-         article(where: {id: {_eq: $id}}) {
-         article_author {
-        name
-        last_name
-      }
-      title
-      article_rubric {
-        type_name
-        id
-      }
-      img_url
-      id
-      body
-       }
-     }
-   }
-`
+const ArticleTemplate = (data, { isOpen }) => {
 
+  const article = data.pageContext.data
 
-export default ({ data }) => {
+  console.log(article.updated_at)//for lazy Queries
 
-  const article = data.Blog.article[0]
+  const update = () => {
+    if (updated_at = "old"){
+      () => "update"
+    }
+  }
 
   return (
     <Layout>
-      <PageHeader
-        ghost={false}
-        onBack={() => window.history.back()}
-        title={article.title}
-      >
-        <Descriptions size="small" span={2} column={1}>
-          <Descriptions.Item
-            label="Written by">{article.article_author.name} {article.article_author.last_name}</Descriptions.Item>
-          <Descriptions.Item label="Rubric">
-            <a href={`/rubric/${article.article_rubric.id}`}>{article.article_rubric.type_name}</a>
-          </Descriptions.Item>
-        </Descriptions>
-      </PageHeader>
+      <Col xs={22} sm={isOpen ? 11 : 23} md={isOpen ? 11 : 12} lg={8} xl={6}
+           style={{
+             marginRight: "auto",
+             placeContent: "flex-start",
+             marginLeft: 15
+           }}>
+        <PageHeader
+          ghost={false}
+          onBack={() => window.history.back()}
+          title={article.title}
+        >
+          <Descriptions size="small" span={2} column={1}>
+            <Descriptions.Item
+              label="Written by">{article.article_author.name} {article.article_author.last_name}</Descriptions.Item>
+            <Descriptions.Item label="Rubric">
+              <a href={`/rubric/${article.article_rubric.id}`}>{article.article_rubric.type_name}</a>
+            </Descriptions.Item>
+          </Descriptions>
+        </PageHeader>
+      </Col>
       <Row>
         <Col xs={24} sm={24} md={24} lg={8} xl={8}>
           <Image
@@ -63,3 +57,9 @@ export default ({ data }) => {
   )
 
 }
+
+
+export default connect(state => ({
+  isOpen: state.app.isOpen
+}), null)(ArticleTemplate)
+

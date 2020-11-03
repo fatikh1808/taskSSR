@@ -14,6 +14,18 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       Blog {
         article {
           id
+          body
+          article_author {
+            last_name
+            name
+          }
+          title
+          updated_at
+          article_rubric {
+            id
+            type_name
+          }
+          img_url
         }
       }
     }
@@ -22,10 +34,10 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const articles = article.data.Blog.article
   articles.forEach(article => {
     createPage({
-      path: `/article/${article.id}`,
+      path: `/${article.article_rubric.type_name}/${article.id}`,
       component: require.resolve("./src/templates/articlePage.jsx"),
       context: {
-        id: article.id
+        data: article
       }
     })
   })
@@ -35,7 +47,20 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     {
       Blog {
         rubrics {
+          type_name
           id
+          rubric_items {
+            title
+            img_url
+            id
+            article_author {
+              last_name
+              name
+            }
+            article_rubric {
+              type_name
+            }
+          }
         }
       }
     }
@@ -45,10 +70,10 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   rubrics.forEach(rubric => {
     createPage({
-      path: `/rubric/${rubric.id}`,
+      path: `/${rubric.type_name}`,
       component: require.resolve("./src/templates/rubricsPage.jsx"),
       context: {
-        id: rubric.id
+        data: rubric
       }
     })
   })

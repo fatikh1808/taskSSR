@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { graphql } from "gatsby"
+import { connect } from "react-redux"
 
 import Layout from "../components/layout"
 import { Title } from "../components/title"
@@ -7,37 +7,13 @@ import { ArticleCard } from "../components/articleCard"
 import { Col } from "antd"
 import Paginator from "../components/paginator"
 
+const RubricsTemplate = (data, { isOpen }) => {
 
-export const query = graphql`
-  query($id: Int!) {
-    Blog {
-      rubrics(where: {id: {_eq: $id}}) {
-      type_name
-        rubric_items {
-          title
-          img_url
-          id
-          article_author {
-            name
-            last_name
-          }
-          article_rubric {
-            type_name
-          }
-        }
-      }
-    }
-  }
-`
-
-
-export default ({ data }) => {
-
-  const rubrics = data.Blog.rubrics
+  const rubrics = data.pageContext.data
 
   const [itemsLimit, setItemsLimit] = useState(10)
   const [offset, setOffset] = useState(0)
-  const [totalItems, setTotalItems] = useState(rubrics[0].rubric_items.length)//Спросить, как длину всего массива. Написать отдельный query
+  const [totalItems, setTotalItems] = useState(rubrics.rubric_items.length)//Спросить, как длину всего массива. Написать отдельный query
 
 
   const onChange = (page, pageSize) => {
@@ -48,10 +24,10 @@ export default ({ data }) => {
   return (
     <Layout>
       <Title>
-        {rubrics[0].type_name}
+        {rubrics.type_name}
       </Title>
-      {rubrics[0].rubric_items.map((item => (
-        <Col xs={24} sm={18} md={12} lg={8} xl={6} key={item.id}>
+      {rubrics.rubric_items.map((item => (
+        <Col xs={24} sm={isOpen ? 11 : 23} md={isOpen ? 11 : 12} lg={8} xl={6} key={item.id}>
           <ArticleCard
             id={item.id}
             author_name={item.article_author.name}
@@ -70,3 +46,8 @@ export default ({ data }) => {
   )
 
 }
+
+
+export default connect(state => ({
+  isOpen: state.app.isOpen
+}), null)(RubricsTemplate)

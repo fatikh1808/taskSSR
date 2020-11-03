@@ -20,7 +20,7 @@ export const ArticleCard = (props) => {
       <Text style={{ marginRight: 5 }}>{author_name}</Text>
       <Text>{author_last_name}</Text>
       <Meta description={rubric}/>
-      <Meta description={<a href={`/article/${id}`}>More</a>}
+      <Meta description={<a href={`/${rubric}/${id}`}>More</a>}
       />
     </Card>
   )
