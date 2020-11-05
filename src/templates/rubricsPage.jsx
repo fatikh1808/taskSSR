@@ -9,7 +9,7 @@ import Paginator from "../components/paginator"
 
 const RubricsTemplate = (props, { isOpen }) => {
 
-  const rubrics = props.pageContext.data
+  const rubrics = props.pageContext.props
 
   const [itemsLimit, setItemsLimit] = useState(10)
   const [offset, setOffset] = useState(0)
@@ -20,6 +20,7 @@ const RubricsTemplate = (props, { isOpen }) => {
     setItemsLimit(pageSize)
     setOffset((page * 10) - 10)
   }
+
 
   return (
     <Layout>
