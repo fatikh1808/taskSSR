@@ -21,7 +21,6 @@ const RubricsTemplate = (props, { isOpen }) => {
     setOffset((page * 10) - 10)
   }
 
-
   return (
     <Layout>
       <Title>
