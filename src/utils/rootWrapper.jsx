@@ -21,9 +21,9 @@ const http = new HttpLink({
 export const client = new ApolloClient({ link: http, cache: new InMemoryCache() })
 
 export const wrapRootElement = ({ element }) => (
-  <ApolloProvider client={client}>
-    <Provider store={createStore()}>
+  <Provider store={createStore()}>
+    <ApolloProvider client={client}>
       {element}
-    </Provider>
-  </ApolloProvider>
+    </ApolloProvider>
+  </Provider>
 )

@@ -7,9 +7,9 @@ import { ArticleCard } from "../components/articleCard"
 import { Col } from "antd"
 import Paginator from "../components/paginator"
 
-const RubricsTemplate = (data, { isOpen }) => {
+const RubricsTemplate = (props, { isOpen }) => {
 
-  const rubrics = data.pageContext.data
+  const rubrics = props.pageContext.data
 
   const [itemsLimit, setItemsLimit] = useState(10)
   const [offset, setOffset] = useState(0)

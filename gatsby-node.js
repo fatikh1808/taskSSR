@@ -37,7 +37,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       path: `/${article.article_rubric.type_name}/${article.id}`,
       component: require.resolve("./src/templates/articlePage.jsx"),
       context: {
-        data: article
+        props: article
       }
     })
   })
@@ -73,7 +73,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       path: `/${rubric.type_name}`,
       component: require.resolve("./src/templates/rubricsPage.jsx"),
       context: {
-        data: rubric
+        props: rubric
       }
     })
   })
