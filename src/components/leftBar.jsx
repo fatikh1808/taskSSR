@@ -10,7 +10,6 @@ const { Sider } = Layout
 
 const LeftBar = ({ isMobileMode, isOpen, dispatch }) => {
 
-
   return (
     <Col xs={24} sm={isOpen ? 1 : 6} md={isOpen ? 1 : 6} lg={3} xl={2}
          style={{ height: isOpen ? "0" : "100%", padding: 0 }}
