@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleCard renders correctly 1`] = `
+<div
+  className="ant-card ant-card-bordered ant-card-hoverable"
+  style={
+    Object {
+      "borderRadius": 5,
+      "width": "80%",
+    }
+  }
+>
+  <div
+    className="ant-card-cover"
+  >
+    <img
+      alt="example"
+    />
+  </div>
+  <div
+    className="ant-card-body"
+    style={Object {}}
+  >
+    <div
+      className="ant-card-meta"
+    />
+    <span
+      className="ant-typography"
+      style={
+        Object {
+          "WebkitLineClamp": null,
+          "marginRight": 5,
+        }
+      }
+    >
+      
+    </span>
+    <span
+      className="ant-typography"
+      style={
+        Object {
+          "WebkitLineClamp": null,
+        }
+      }
+    >
+      
+    </span>
+    <div
+      className="ant-card-meta"
+    />
+    <div
+      className="ant-card-meta"
+    >
+      <div
+        className="ant-card-meta-detail"
+      >
+        <div
+          className="ant-card-meta-description"
+        >
+          <a
+            href="/undefined/undefined"
+          >
+            More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

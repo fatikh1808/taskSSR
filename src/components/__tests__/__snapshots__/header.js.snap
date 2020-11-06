@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<div
+  className="ant-col ant-col-24"
+  style={
+    Object {
+      "background": "rebeccapurple",
+      "marginBottom": 0,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "padding": "1.45rem 1.0875rem",
+        "textAlign": "left",
+      }
+    }
+  >
+    <h1
+      style={
+        Object {
+          "margin": 0,
+        }
+      }
+    >
+      <a
+        href="/"
+        style={
+          Object {
+            "color": "white",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Anything
+      </a>
+    </h1>
+  </div>
+</div>
+`;

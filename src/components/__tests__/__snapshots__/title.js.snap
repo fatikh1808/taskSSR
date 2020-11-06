@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paginator renders correctly 1`] = `
+<div
+  className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-24"
+  style={Object {}}
+>
+  <h1 />
+</div>
+`;
