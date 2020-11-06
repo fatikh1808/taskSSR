@@ -28,7 +28,7 @@ const ArticlePageRenderer = ({article, isOpen, backgroundColor}) => {
             <Descriptions.Item
               label="Written by">{article.article_author.name} {article.article_author.last_name}</Descriptions.Item>
             <Descriptions.Item label="Rubric">
-              <a href={`/rubric/${article.article_rubric.id}`}>{article.article_rubric.type_name}</a>
+              <a href={`/${article.article_rubric.type_name}`}>{article.article_rubric.type_name}</a>
             </Descriptions.Item>
           </Descriptions>
         </PageHeader>
