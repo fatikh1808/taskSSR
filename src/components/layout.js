@@ -7,6 +7,7 @@ import Header from "./header"
 import "./layout.css"
 import { Footer } from "./footer"
 import LeftBar from "./leftBar"
+import { ArticleCard } from "./articleCard"
 
 const Layout = ({ children, isOpen }) => {
 
@@ -28,7 +29,6 @@ const Layout = ({ children, isOpen }) => {
     </Row>
   )
 }
-
 
 export default connect(state => ({
   isOpen: state.app.isOpen

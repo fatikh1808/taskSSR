@@ -7,17 +7,17 @@ import s from "./articlePageRenderer.module.css"
 const { Text } = Typography
 
 
-const ArticlePageRenderer = (props) => {
-
-  const { isOpen, article } = props
+const ArticlePageRenderer = ({article, isOpen, backgroundColor}) => {
 
   return (
     <Layout>
-      <Col xs={22} sm={isOpen ? 11 : 23} md={isOpen ? 11 : 12} lg={8} xl={6}
+      <Col
+        xs={22} sm={isOpen ? 11 : 23} md={isOpen ? 11 : 12} lg={8} xl={6}
            style={{
              marginRight: "auto",
              placeContent: "flex-start",
-             marginLeft: 15
+             marginLeft: 15,
+             backgroundColor
            }}>
         <PageHeader
           ghost={false}

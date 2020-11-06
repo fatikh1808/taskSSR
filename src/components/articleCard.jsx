@@ -6,14 +6,12 @@ import { Typography } from "antd"
 const { Meta } = Card
 const { Text } = Typography
 
-export const ArticleCard = (props) => {
-
-  const { id, author_name, title, rubric, image, author_last_name } = props
+export const ArticleCard = ({ id, author_name, title, rubric, image, author_last_name, backgroundColor, width, borderRadius }) => {
 
   return (
     <Card
       hoverable
-      style={{ width: "80%", borderRadius: 5}}
+      style={{ borderRadius, backgroundColor, width}}
       cover={<img alt="example" src={image}/>}
     >
       <Meta title={title}/>
@@ -25,3 +23,9 @@ export const ArticleCard = (props) => {
     </Card>
   )
 }
+
+ArticleCard.defaultProps = {
+  backgroundColor: null,
+  width: "80%",
+  borderRadius: 5
+};
